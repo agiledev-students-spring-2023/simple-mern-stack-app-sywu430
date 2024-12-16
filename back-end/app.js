@@ -40,6 +40,22 @@ app.get('/messages', async (req, res) => {
   }
 })
 
+app.get('/aboutus', async (req, res) => {
+  // load all messages from database
+  try {
+    res.json({
+      text: 'This is Yewon Song. I major in computer science and planning to go to the graduate school. Thank you.',  
+      imageurl:  'https://hips.hearstapps.com/hmg-prod/images/close-up-of-cat-wearing-sunglasses-while-sitting-royalty-free-image-1571755145.jpg?crop=0.670xw:1.00xh;0.147xw,0&resize=1200:*'
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(400).json({
+      error: err,
+      status: 'failed to retrieve messages from the database',
+    })
+  }
+})
+
 // a route to handle fetching a single message by its id
 app.get('/messages/:messageId', async (req, res) => {
   // load all messages from database
